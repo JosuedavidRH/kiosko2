@@ -4,6 +4,6 @@
     { "src": "dist/kiosko_angular/**/*", "use": "@vercel/static" }
   ],
   "routes": [
-    { "src": "/(.*)", "dest": "/dist/kiosko_angular/index.html" }
+    { "src": "/(.*)", "dest": "dist/kiosko_angular/index.html" }
   ]
 }
