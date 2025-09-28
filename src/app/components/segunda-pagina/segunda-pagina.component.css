@@ -1,0 +1,50 @@
+.container {
+  background-color: white;
+  color: black;
+  text-align: center;
+  padding-top: 50px;
+  min-height: 100vh;
+}
+
+h2 {
+  margin-bottom: 30px;
+}
+
+.codigos-container {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-bottom: 40px;
+}
+
+.codigos-container div {
+  padding: 10px 20px;
+  border-radius: 10px;
+  font-weight: bold;
+  font-size: 1.3rem;
+  background-color: #f0f0f0;
+}
+
+.codigos-container div.activo {
+  background-color: #00c0ff;
+}
+
+.qr-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.volver-btn {
+  margin-top: 60px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 90px;
+  width: 160px;
+  height: 160px;
+  padding: 40px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: bold;
+}

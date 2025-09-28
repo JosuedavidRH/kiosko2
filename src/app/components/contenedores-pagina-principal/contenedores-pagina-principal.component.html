@@ -1,0 +1,78 @@
+<!-- contenedores-pagina-principal.component.html -->
+
+<!-- ⏰ Header con mensaje -->
+<header *ngIf="clickCount >= 1" style="display:flex; justify-content:center; transform:translateY(-15px); margin-left:160px;">
+  <div style="background-color:transparent; width:170px; height:60px; border-radius:12px; display:flex; flex-direction:column; justify-content:center; align-items:center;">
+    <span style="font-size:0.7rem; color:white;">ESPERA TUS FACTURAS</span>
+  </div>
+</header>
+
+<!-- 🧾 Header con facturas pendientes -->
+<header *ngIf="clickCount >= 1" style="display:flex; justify-content:center; transform:translateY(-50px); margin-left:-210px;">
+  <div style="background-color:rgba(0,0,0,0.2); width:170px; height:200px; border-radius:12px; display:flex; flex-direction:column; justify-content:center; align-items:center;">
+    <img src="/compras.png" alt="Compras" style="width:80px; height:80px; margin-bottom:5px;" />
+    <span style="font-size:0.8rem; color:white;">
+      HAY <span style="font-size:2rem; font-weight:bold;">{{ clickCount }}</span> FACTURAS por valor de ;
+    </span>
+  </div>
+</header>
+
+<!-- ✅ Factura 1 -->
+<header *ngIf="clickCount >= 1" style="display:flex; justify-content:center; transform:translateY(-210px); margin-left:170px;">
+  <div style="background-color:rgba(0,0,0,0.2); width:200px; height:120px; border-radius:12px; display:flex; justify-content:center; align-items:center;">
+    <ng-container *ngIf="factura1Terminada; else temporizador1">
+      <div style="text-align:center;">
+        <div style="font-size:0.9rem; margin-bottom:8px; font-weight:bold;">lista tu factura 1 valor;</div>
+        <button style="background-color:green; color:white; border:none; border-radius:10px; padding:10px 16px; cursor:pointer; font-size:1.3rem;">pagar</button>
+      </div>
+    </ng-container>
+    <ng-template #temporizador1>
+      <button (click)="setClicked(!clicked)" style="width:70px; height:70px; border-radius:50%; font-size:0.6rem; background-color:#ff0; color:#000; border:none; cursor:pointer; display:flex; justify-content:center; align-items:center; text-align:center;">
+        <app-temporizador-factura1 
+          [initialTime]="1200" 
+          (finish)="setFactura1Terminada(true)">
+        </app-temporizador-factura1>
+      </button>
+    </ng-template>
+  </div>
+</header>
+
+<!-- ✅ Factura 2 -->
+<header *ngIf="clickCount >= 2" style="display:flex; justify-content:center; transform:translateY(-200px); margin-left:170px;">
+  <div style="background-color:rgba(0,0,0,0.2); width:200px; height:120px; border-radius:12px; display:flex; justify-content:center; align-items:center;">
+    <ng-container *ngIf="factura2Terminada; else temporizador2">
+      <div style="text-align:center;">
+        <div style="font-size:0.9rem; margin-bottom:8px; font-weight:bold;">lista tu factura 2 valor;</div>
+        <button style="background-color:green; color:white; border:none; border-radius:10px; padding:10px 16px; cursor:pointer; font-size:1.3rem;">pagar</button>
+      </div>
+    </ng-container>
+    <ng-template #temporizador2>
+      <button (click)="setClicked(!clicked)" style="width:70px; height:70px; border-radius:50%; font-size:0.6rem; background-color:#ff0; color:#000; border:none; cursor:pointer; display:flex; justify-content:center; align-items:center; text-align:center;">
+        <app-temporizador-factura2 
+          
+          (finish)="setFactura2Terminada(true)">
+        </app-temporizador-factura2>
+      </button>
+    </ng-template>
+  </div>
+</header>
+
+<!-- ✅ Factura 3 -->
+<header *ngIf="clickCount >= 3" style="display:flex; justify-content:center; transform:translateY(-190px); margin-left:170px;">
+  <div style="background-color:rgba(0,0,0,0.2); width:200px; height:120px; border-radius:12px; display:flex; justify-content:center; align-items:center;">
+    <ng-container *ngIf="factura3Terminada; else temporizador3">
+      <div style="text-align:center;">
+        <div style="font-size:0.9rem; margin-bottom:8px; font-weight:bold;">lista tu factura 3 valor;</div>
+        <button style="background-color:green; color:white; border:none; border-radius:10px; padding:10px 16px; cursor:pointer; font-size:1.3rem;">pagar</button>
+      </div>
+    </ng-container>
+    <ng-template #temporizador3>
+      <button (click)="setClicked(!clicked)" style="width:70px; height:70px; border-radius:50%; font-size:0.6rem; background-color:#ff0; color:#000; border:none; cursor:pointer; display:flex; justify-content:center; align-items:center; text-align:center;">
+        <app-temporizador-factura3 
+          
+          (finish)="setFactura3Terminada(true)">
+        </app-temporizador-factura3>
+      </button>
+    </ng-template>
+  </div>
+</header>
