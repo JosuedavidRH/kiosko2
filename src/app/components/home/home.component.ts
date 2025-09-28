@@ -1,6 +1,6 @@
 
 
-// src/app/components/home/home.component.ts
+// src/app/components/home/home.component.ts.
 
 
 import { Component, HostListener, inject, signal, effect } from '@angular/core';
