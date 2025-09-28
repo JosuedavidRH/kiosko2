@@ -1,0 +1,72 @@
+<!-- src/app/components/home/home.component.html -->
+
+
+
+
+<div
+  [style.display]="'flex'"
+  [style.flexDirection]="'column'"
+  [style.justifyContent]="'space-between'"
+  [style.height]="'100vh'"
+  [style.backgroundColor]="temporizador.fondoRojo() ? 'red' : '#282c34'"
+  [style.color]="'white'"
+  [style.fontFamily]="'Arial, sans-serif'"
+  [style.padding]="'20px'"
+  [style.textAlign]="'center'"
+>
+  <!-- Encabezado -->
+  <h1 style="font-size: 20px">
+    Hola, {{ user() }}! Apto: {{ apartmentNumber() }}
+  </h1>
+
+  <!-- Temporizador principal -->
+  <div *ngIf="clickCount() > 0" style="font-size: 21px; font-weight: bold">
+    PLAZO DE PAGO {{ temporizador.formatTimeLeft() }}
+    <fa-icon
+      [icon]="faClock"
+      style="font-size: 2rem; color:white; animation: pulse 1s infinite; margin-bottom: 5px;"
+    ></fa-icon>
+  </div>
+
+  <!-- Contenedores principales -->
+  <app-contenedores-pagina-principal
+    [clickCount]="clickCount()"
+    [factura1Terminada]="factura1Terminada()"
+    [factura2Terminada]="factura2Terminada()"
+    [factura3Terminada]="factura3Terminada()"
+    (factura1Change)="factura1Terminada.set($event)"
+    (factura2Change)="factura2Terminada.set($event)"
+    (factura3Change)="factura3Terminada.set($event)"
+    (clickedChange)="clicked.set($event)"   
+  ></app-contenedores-pagina-principal>
+
+  <!-- Footer con BotonPrincipal y cerrar sesión -->
+  <footer
+    style="display:flex; justify-content:center; transform: translateY(-240px);"
+  >
+    <div
+      style="background-color: transparent; width: 250px; height: 70px; margin-top: 90px; margin-left: 100px; border-radius: 100px; display: flex; justify-content:center; align-items:center;"
+    >
+      <app-boton-principal
+  [clickCount]="clickCount()"
+  (clickCountChange)="clickCount.set($event)"
+  [isProcessing]="isProcessing()"
+  (isProcessingChange)="isProcessing.set($event)"
+  [apartmentNumber]="apartmentNumber() ?? ''"
+  [startCountdown]="temporizador.startCountdown.bind(temporizador)"
+></app-boton-principal>
+
+
+      <div
+        style="background-color: transparent; width: 110px; height: 60px; border-radius: 12px; display:flex; flex-direction: column; justify-content:center; align-items:center;"
+      >
+        <button
+          (click)="handleCerrarSesion()"
+          style="align-self:center; margin-top:190px; margin-left:-250px; padding:6px 6px; font-size:0.9rem; border-radius:5px; background-color:#f44336; color:white; border:none; cursor:pointer;"
+        >
+          Cerrar 🔒
+        </button>
+      </div>
+    </div>
+  </footer>
+</div>

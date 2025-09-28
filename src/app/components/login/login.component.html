@@ -1,0 +1,34 @@
+
+<!--login.component.html-->
+
+<div class="login-background">
+  <div class="login-box">
+    <img src="/k.jpg" alt="kiosko logo" class="logo">
+
+    <h2>Iniciar sesión</h2>
+
+    <form (ngSubmit)="handleSubmit($event)">
+      <input
+        type="text"
+        placeholder="Usuario"
+        [(ngModel)]="username"  
+        name="username"         
+        required
+      >
+      <input
+        type="password"
+        placeholder="Contraseña"
+        [(ngModel)]="password"  
+        name="password"          
+        required
+      >
+      <button type="submit">Ingresar</button>
+    </form>
+
+    <button class="register-btn" routerLink="/register">
+      Registrarse
+    </button>
+
+    <p *ngIf="error" class="error">{{ error }}</p>
+  </div>
+</div>

@@ -1,0 +1,35 @@
+  <!--src/app/segunda-pagina/segunda-pagina.component.html-->
+
+<!-- src/app/segunda-pagina/segunda-pagina.component.html -->
+
+<div class="container">
+  <!-- Título con valor por defecto "302" si user es null -->
+  <h2>Bienvenido {{ user() ?? '302' }} a la segunda página</h2>
+
+  <!-- Mostrar los códigos -->
+  <div class="codigos-container">
+    <div *ngFor="let code of codigos() ?? []; let i = index"
+         [ngClass]="{'activo': i === indexActual()}">
+      {{ code }}
+    </div>
+  </div>
+
+  <!-- Mostrar QR actual -->
+  <div *ngIf="qrActual; else noQr" class="qr-container">
+    <qrcode
+      [qrdata]="(user() ?? '302') + '|' + qrActual"
+      [width]="200"
+      [errorCorrectionLevel]="'M'">
+    </qrcode>
+  </div>
+
+  <!-- Template si no hay QR -->
+  <ng-template #noQr>
+    <p>No hay más QR para mostrar.</p>
+  </ng-template>
+
+  <!-- Botón volver -->
+  <button (click)="manejarVolver()" class="volver-btn">
+    Volver a la página principal
+  </button>
+</div>
