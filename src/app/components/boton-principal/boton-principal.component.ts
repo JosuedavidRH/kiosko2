@@ -80,7 +80,7 @@ export class BotonPrincipalComponent {
       let codigosBD: string[] = [];
 
       const data: any = await this.http
-        .get(`https://backend-1uwd.onrender.com/api/guardar/recuperar/${apartmentNumber}`)
+        .get(`https://backend-1uwd.onrender.com/api/guardar/recuperar/${this.apartmentNumber}`)
         .toPromise();
 
       const hayCodigos = data.success && data.data?.length > 0;
