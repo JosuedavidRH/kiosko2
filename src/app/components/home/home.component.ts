@@ -5,8 +5,7 @@
 
 import { Component, HostListener, inject, signal, effect } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { faClock } from '@fortawesome/free-solid-svg-icons';
+
 import { Router } from '@angular/router'; // 🔹 Importar Router para redirigir
 
 import { TemporizadorService } from '../../services/temporizador.service';
@@ -18,7 +17,6 @@ import { BotonPrincipalComponent } from '../boton-principal/boton-principal.comp
   standalone: true,
   imports: [
     CommonModule,
-    FontAwesomeModule,
     ContenedoresPaginaPrincipalComponent,
     BotonPrincipalComponent,
   ],
@@ -26,8 +24,7 @@ import { BotonPrincipalComponent } from '../boton-principal/boton-principal.comp
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent {
-  faClock = faClock;
-
+  
   user = signal<string | null>(null);
   apartmentNumber = signal<string | null>(null);
 
