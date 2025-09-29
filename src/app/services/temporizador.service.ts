@@ -1,4 +1,5 @@
 // src/app/services/temporizador.service.ts
+
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, interval, Subscription } from 'rxjs';
 
@@ -121,12 +122,17 @@ export class TemporizadorService {
 
   // ================== Privados ==================
   private startInterval() {
-    this.intervalSub = interval(1000).subscribe(() => {
-      const current = this.timeLeftSubject.value;
+    const startTime = Date.now();
+    const initial = this.timeLeftSubject.value;
 
-      if (current <= 1) {
+    this.intervalSub = interval(1000).subscribe(() => {
+      const elapsed = Math.floor((Date.now() - startTime) / 1000);
+      const remaining = Math.max(initial - elapsed, 0);
+
+      this.timeLeftSubject.next(remaining);
+
+      if (remaining <= 0) {
         this.stopInterval();
-        this.timeLeftSubject.next(0);
         this.isRunningSubject.next(false);
         this.fondoRojoSubject.next(true);
 
@@ -138,8 +144,6 @@ export class TemporizadorService {
             statusActual: this.statusActual,
           });
         }
-      } else {
-        this.timeLeftSubject.next(current - 1);
       }
     });
   }
