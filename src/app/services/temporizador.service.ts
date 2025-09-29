@@ -2,6 +2,23 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, interval, Subscription } from 'rxjs';
 
+// ⚠️ Equivalente a tu "../utils/cerrarSesion"
+async function cerrarSesionGlobal(payload: {
+  auto: boolean;
+  temporizadorPrincipal: number;
+  userId: string;
+  statusActual: number;
+}) {
+  try {
+    await fetch('https://backend-1uwd.onrender.com/api/realTime/temporizador', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+    });
+  } catch (err) {
+    console.error('❌ Error en cerrarSesionGlobal', err);
+  }
+}
 
 @Injectable({
   providedIn: 'root',
