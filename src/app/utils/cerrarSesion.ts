@@ -69,7 +69,7 @@ export function cerrarSesionGlobal({
   try {
     if (auto && navigator.sendBeacon) {
       navigator.sendBeacon(
-        "http://localhost:4000/api/realtime/cerrarSesion",
+        "https://backend-1uwd.onrender.com/api/realTime/cerrarSesion",
         new Blob([body], { type: "application/json" })
       );
 
@@ -87,7 +87,7 @@ export function cerrarSesionGlobal({
     }
 
     // Manual con fetch
-    fetch("http://localhost:4000/api/realtime/cerrarSesion", {
+    fetch("https://backend-1uwd.onrender.com/api/realTime/cerrarSesion", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body,
